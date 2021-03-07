@@ -1,8 +1,6 @@
 body {
 	font-family: 'Rye', cursive;
 	background-color: LightPink;
-  
-  background-image: url("\inflate-the-unicorn\images\background.jpg");
 }
 
 h1 { 
@@ -66,4 +64,12 @@ td {
 #shurima {
   background-image: url("inflate-the-unicorn/images/background.jpg");
   background-position: center; 
+}
+
+.mole {
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-image: url("whack-a-mole/mole.PNG");
+  background-size: cover;
 }
