@@ -1,7 +1,7 @@
 // -    -   -   -   -  //
 // JAVASCRIPT CARNIVAL //
 // -    -   -   -   -  //
-document.addEventListener('keydown', function (e) {
+document.addEventListener('keyup', function (e) {
   switch (e.keyCode) {
     case 37:
       changeClothing('left');
@@ -18,77 +18,79 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-var headIndex = 0;
-var bodyIndex = 0;
-var shoesIndex = 0;
-var partIndex = 0;
+var indexes = {
+  headIndex: 0,
+  bodyIndex: 0,
+  shoesIndex: 0,
+  clothingIndex: 0
+}
 
-var clothingIndex = 0;
+var clothing = [
+  'head', 'body', 'shoes'
+]
 
 function changeClothingIndex(key) {
   if (key == 'up') {
-    if (clothingIndex == 2) {
-      clothingIndex = 0;
+    if (indexes.clothingIndex >= 2) {
+      indexes.clothingIndex = 0;
     }
     else {
-      clothingIndex++;
+      indexes.clothingIndex++;
     }
   }
   else {
-    if (clothingIndex == 0) {
-      clothingIndex = 2;
+    if (indexes.clothingIndex <= 0) {
+      indexes.clothingIndex = 2;
     }
-
     else {
-      clothingIndex--;
+      indexes.clothingIndex--;
     }
   }
+  
+  let el = document.getElementById('clothingIndex');
+  el.innerHTML = clothing[indexes.clothingIndex];
+
+  
 }
 
 function changeClothing(key) {
-  if (clothingIndex == 0) {
-    changeBodyPart("head", headIndex, key);
+  if (indexes.clothingIndex == 0) {
+    changeBodyPart("head", 'headIndex', key);
   }
-  else if (clothingIndex == 1) {
-    changeBodyPart("body", bodyIndex, key);
+  else if (indexes.clothingIndex == 1) {
+    changeBodyPart("body", 'bodyIndex', key);
   }
-  else if (clothingIndex == 2) {
-    changeBodyPart("shoes", shoesIndex, key);
+  else if (indexes.clothingIndex == 2) {
+    changeBodyPart("shoes", 'shoesIndex', key);
   }
 }
 
 function changeBodyPart(part, partIndex, key) {
   var bodyPart = document.getElementById(part);
-
-  var src = "./images/" + part + partIndex
-  fullSrc = src.concat(".png");
-
+ 
   if (key == 'left') {
-    if (partIndex == 0) {
-      partIndex = 5;
-      src = "./images/" + part + partIndex
-      fullSrc = src.concat(".png");
-      bodyPart.src = fullSrc;
-      console.log("left reset to 5" + partIndex)
+    if (indexes[partIndex] <= 0) {
+      indexes[partIndex] = 5;
     }
     else {
-      partIndex = partIndex - 1;
+      indexes[partIndex] = indexes[partIndex] - 1;
       bodyPart.src = fullSrc;
-      console.log("left only" + partIndex);
     }
   }
   else {
-    if (partIndex == 5) {
-      partIndex = 0;
-      src = "./images/" + part + partIndex
-      fullSrc = src.concat(".png");
-      bodyPart.src = fullSrc;
-      console.log("right reset to 0" + partIndex)
+    if (indexes[partIndex] >= 5) {
+      indexes[partIndex] = 0;
     }
     else {
-      partIndex = partIndex + 1;
-      bodyPart.src = fullSrc;
-      console.log("right only" + partIndex);
+      indexes[partIndex] = indexes[partIndex] + 1;
     }
   }
+  
+  fullSrc = `./images/${part}${indexes[partIndex]}.png`;
+  bodyPart.src = fullSrc;
+
+  let el = document.getElementById(partIndex);
+  el.innerHTML = indexes[partIndex];
+
+
 }

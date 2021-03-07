@@ -73,3 +73,7 @@ td {
   background-image: url("whack-a-mole/mole.PNG");
   background-size: cover;
 }
+
+.dressTable {
+  margin-left: 400px;
+}
