@@ -3,23 +3,24 @@
 // -    -   -   -   -  //
 function inflateUnicorn(clicked_id){  
   if(clicked_id){
-  currentUnicorn = document.getElementById(clicked_id);
-  console.log(currentUnicorn.src);
+  currentAzir = document.getElementById(clicked_id);
+  console.log(currentAzir.src);
 
-  var digit = currentUnicorn.src.slice(-5);
+  var digit = currentAzir.src.slice(-6);
   
-  if (digit === "0.png"){
-    currentUnicorn.src = "./images/unicorn-1.png"
+
+  if (digit === "r.webp"){
+    currentAzir.src = "./images/azir0.webp"
   }
-  else if (digit === "1.png"){
-    currentUnicorn.src = "./images/unicorn-2.png"
+  else if (digit === "0.webp"){
+    currentAzir.src = "./images/azir1.webp"
   }
-  else if (digit === "2.png"){
-    currentUnicorn.src = "./images/unicorn-3.png"
+  else if (digit === "1.webp"){
+    currentAzir.src = "./images/azir2.webp"
   }
-  else {
-    var unicornNum = currentUnicorn.id.slice(-1);
-    alert("Unicorn " + unicornNum + " thanks you!");
+  else {    
+    var audio =  new Audio('./audio/azir1.ogg');
+    audio.play();
   }
   }
 }

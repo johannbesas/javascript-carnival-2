@@ -1,6 +1,8 @@
 body {
 	font-family: 'Rye', cursive;
 	background-color: LightPink;
+  
+  background-image: url("\inflate-the-unicorn\images\background.jpg");
 }
 
 h1 { 
@@ -28,8 +30,8 @@ td {
 
 .inflate-an-image{
     display: inline-block;
-    width: 400px;
-    height: 400px;
+    width: 20%;
+    height: 20%;
     margin: 5px;
 }
 
@@ -59,4 +61,9 @@ td {
 
 .shoes {
   z-index: 1
+}
+
+#shurima {
+  background-image: url("inflate-the-unicorn/images/background.jpg");
+  background-position: center; 
 }
